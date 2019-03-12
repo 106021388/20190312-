@@ -1,0 +1,49 @@
+import java.util.*;
+import java.lang.*;
+import java.io.*;
+public class hw1 {
+       public static void main(String[] args) throws IOException{
+        Scanner input = new Scanner (new File("C:\\java\\N20M20Max10_A.txt"));
+        Scanner input2 = new Scanner (new File("C:\\java\\N20M20Max10_B.txt"));
+        FileWriter fw =new FileWriter("C:\\java\\106021388-2.txt");
+        BufferedWriter bfw=new BufferedWriter(fw);
+      	int m = 20;
+        int n = 20;
+        int o=20; int k=20;int y=20; int g=20;
+        int[][] a = new int [m][n];
+        int[][] b = new int [o][k];
+        int[][] c= new int[y][g]; 
+        while(input.hasNextLine()) {
+            for (int i=0;i<m;i++){
+                for (int j=0;j<n;j++) {
+                 a[i][j]= input.nextInt();
+               
+            } 
+        }
+            while(input2.hasNextLine()) {
+                 for (int i=0;i<o;i++){
+                    for (int j=0;j<k;j++) {
+                     b[i][j]= input2.nextInt();
+                    }
+                } 
+            }
+                 for (int i=0;i<a.length;i++){
+                     for (int j=0;j<b.length;j++) {
+                      c[i][j]=a[i][j]*b[i][j];
+                    
+                 } 
+             }
+                   for(int i=0;i<m;i++){
+            for(int j=0;j<n;j++){
+                System.out.print(c[i][j]+" ");
+                bfw.write(Integer.toString(c[i][j])+" ");
+        	}
+             System.out.println();
+             bfw.newLine();
+      }
+    } 
+        input.close();
+	    bfw.flush();      
+  	    fw.close();
+	}
+}
