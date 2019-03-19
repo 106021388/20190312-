@@ -1,0 +1,44 @@
+import java.util.HashMap;
+import java.io.*;
+public class PubMedParsedData_Extract_4 {
+    public static void main(String[] args) throws IOException  {
+       String str;
+       int count=0;
+       FileReader fr=new FileReader("C:\\java\\2013-02_Parsed.txt");       
+       BufferedReader bfr=new BufferedReader(fr);
+       FileWriter fw=new FileWriter("C:\\java\\2013-02_Parsed1.txt");
+       BufferedWriter bfw=new BufferedWriter(fw);
+       HashMap WordCnt = new HashMap <String, Integer>();
+       while((str=bfr.readLine())!=null)   // 每次讀取一行，直到檔案結束
+       {
+         count++;                   // 計算讀取的行數
+         String[] Items = new String(str.toLowerCase()).trim().split("##");
+         if (Items.length >= 3) {
+	       	 String[] Items_Word = new String(Items[2]).trim().split("\\s+");
+	      	 for (int i=0;i<Items_Word.length;++i) {
+	     	if (WordCnt.containsKey(Items_Word[i])){
+	          		int temp = (int) WordCnt.get(Items_Word[i]);
+	       	 		temp++;
+	       	 		WordCnt.put(Items_Word[i],temp);
+	       	 	}
+	       	 	else {
+	       	 		 WordCnt.put(Items_Word[i],1);
+	       	 	}
+	       	 } 
+         } 
+         else {
+        	 System.out.println(count+" Error format line=>"+str); 
+              }
+       } 
+	   fr.close();// 關閉檔案
+	   System.out.println(count+" lines read");
+	   for (Object key : WordCnt.keySet()) {
+            System.out.println(key + " \t " + WordCnt.get(key));
+            bfw.write(key + "\t" + WordCnt.get(key));  // 寫入亂數到緩衝區
+         	bfw.newLine(); // 寫入換行符號
+       }
+       bfw.flush();      // 將緩衝區內的資料寫到檔案裡
+       fw.close();       // 關閉檔案
+
+    } 
+} 
