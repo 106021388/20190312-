@@ -1,0 +1,64 @@
+class CCircle        // 父類別CCircle
+{
+   private static double pi=3.14;
+   private double radius;
+   public CCircle()   {}   // CCircle()建構元
+   public void setRadius(double r)
+   {
+      radius=r;
+      System.out.println("radius="+radius);
+   }
+   public void show()
+   {
+      System.out.println("area="+pi*radius*radius);
+   }
+}
+class CCoin extends CCircle      // 子類別CCoin，繼承自CCircle類別
+{
+   private int value;            // 子類別的資料成員
+   public CCoin() {}         // 子類別的建構元
+   public void setValue(int t){}    // 子類別的setValue() method  
+}
+class NationalCoin extends CCoin    {
+   private int value;
+   private String Nation;
+   private String Material;
+   public NationalCoin(){}    
+   public void setNation(String Name){Nation=Name;}        
+   public void setMaterial(String Name2) {Material=Name2;} 
+   public void setValue(int t) {value=t;}            
+   public void ShowCoin()   {  
+   System.out.println("Nation="+Nation+" "+"Money="+this.value+" "+"Material="+this.Material);    
+   }  
+}
+public class app10_1{
+   public static void main(String args[]){
+      NationalCoin Taiwan_1=new NationalCoin();
+      NationalCoin Taiwan_5=new NationalCoin();
+      NationalCoin Taiwan_10=new NationalCoin();
+      NationalCoin Japan_10=new NationalCoin();
+      NationalCoin Japan_100=new NationalCoin();
+      Taiwan_1.setNation("Taiwan");
+      Taiwan_1.setMaterial("Gold");
+      Taiwan_5.setNation("Taiwan");
+      Taiwan_5.setMaterial("Sliver");
+      Taiwan_10.setNation("Taiwan");
+      Taiwan_10.setMaterial("broze");
+      Japan_10.setNation("Japan");
+      Japan_10.setMaterial("Gold");
+      Japan_100.setNation("Japan");
+      Japan_100.setMaterial("Sliver");
+      Taiwan_1.setValue(1);
+      Taiwan_1.ShowCoin();
+      Taiwan_5.setValue(5);
+      Taiwan_5.ShowCoin();
+      Taiwan_10.setValue(10);
+      Taiwan_10.ShowCoin();
+      Japan_10.setValue(10);
+      Japan_10.ShowCoin();
+      Japan_100.setValue(100);
+      Japan_100.ShowCoin();
+     
+      
+   }
+}
